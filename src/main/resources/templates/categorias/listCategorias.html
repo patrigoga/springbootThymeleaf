@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="thhp://www.thymeleaf.org" lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="favicon.ico">
+	<title>Lista categorias</title>
+	<!-- Puedes agregar enlaces a hojas de estilo CSS aquí -->
+	<!-- <link rel="stylesheet" href="estilos.css"> -->
+	<!-- Bootstrap core CSS -->
+	<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
+	<link th:href="@{/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
+	<link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
+
+</head>
+
+<body>
+	<header th:insert="fragments/menu :: menu-principal"></header>
+
+	<main>
+		<div class="container">
+
+			<div class="card m-2">
+				<h4 class="card-header"><strong>Listado de Categoríaso</strong></h4>
+				<div class="card-body">
+				
+					<a class="btn btn-primary" th:href="@{/categorias/create}" title="Crear nueva categoría"
+						role="button"><i class="fas fa-file" aria-hidden="true"></i> Nueva</a>
+					<hr>
+					<div th:if="${msg != null}" class='alert alert-success' th:text="${msg}" role='alert'></div>
+
+					<table class="table table-hover">
+						<thead class="thead-light">
+							<tr>
+								<th scope="col">id</th>
+								<th scope="col">Categoría</th>
+								<th scope="col">Descripción</th>								
+								<th scope="col">Operaciones</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="categoria : ${categorias}">
+							
+								<td th:text="${categoria.id}"></td>
+								<td th:text="${categoria.nombre}"></td>
+								<td th:text="${categoria.descripcion}"></td>
+								
+								<td>
+									<a href="#" class="btn btn-success btn-sm" role="button"
+										title="Editar el registro."><i class="fas fa-pencil-alt"
+											aria-hidden="true"></i></a>
+									<a href="#" onclick="confirm('¿Estas seguro?')" class="btn btn-success btn-sm"
+										role="button" title="Eliminar el registro."><i class="fas fa-trash"
+											aria-hidden="true"></i></a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+		</div> <!-- /container -->
+
+
+	</main>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="thhp://www.thymeleaf.org" lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Pagina principal</title>
+	<!-- Puedes agregar enlaces a hojas de estilo CSS aquí -->
+	<!-- <link rel="stylesheet" href="estilos.css"> -->
+
+	<title>Listado de Ofertas de trabajo</title>
+</head>
+
+<body>
+
+	<h1>Vacantes disponibles</h1>
+
+	<ol>
+		<li th:each="lista:${empleos}" th:text="${lista}"></li>
+
+
+	</ol>
+
+</body>
+
+</html>

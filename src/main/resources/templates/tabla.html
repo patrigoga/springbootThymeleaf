@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="thhp://www.thymeleaf.org" lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Listado Vacantes</title>
+	<!-- Puedes agregar enlaces a hojas de estilo CSS aquí -->
+	<!-- <link rel="stylesheet" href="estilos.css"> -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+		 <!-- Bootstrap core CSS -->
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
+    <link th:href="@{/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
+</head>
+
+<body>
+
+	<header th:insert="fragments/menu :: menu-principal"></header>
+
+	<main>
+
+		<img th:src="@{/images/java.png}" width="90" height="78">
+
+		<h1 class="text-success">Listado de vacantes</h1>
+
+		<!--	<table style="width:85%" border="2" class="m-2">
+		<tr>
+			<th>Id</th>
+			<th>Nombre</th>
+			<th>Fecha de publicación</th>
+			<th>Salario Ofrecido</th>
+			<th>Descripción</th>
+		</tr>
+		<tr th:each="vacante: ${vacantes}">
+			<td th:text="${vacante.id}"></td>
+			<td th:text="${vacante.nombre}"></td>
+
+			<td th:text="${vacante.fecha}"></td>
+			<td th:text="${vacante.salario}"></td>
+			<td th:text="${vacante.descripcion}"></td>
+
+
+		</tr>
+
+	</table>-->
+
+		<table class="table table-danger table-hover table-striped table-bordered">
+			<thead>
+				<tr>
+					<th scope="col">Logo</th>
+					<th scope="col">id</th>
+					<th scope="col">nombre</th>
+					<th scope="col">Fecha publicación</th>
+					<th scope="col">salario ofrecio</th>
+					<th scope="col">Descripcion</th>
+					<th scope="col">Destacada</th>
+					<th scope="col">Detalle</th>
+					<th scope="col">Eliminar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="vacante: ${vacantes}">
+					<td>
+						<img th:src="@{/images/{img}(img=${vacante.imagen})}" width="90" height="78">
+					</td>
+					<td th:text="${vacante.id}"></td>
+					<td th:text="${vacante.nombre}"></td>
+					<td th:text="${vacante.fecha}"></td>
+					<td th:text="${vacante.salario}"></td>
+					<td th:text="${vacante.descripcion}"></td>
+					<!--
+				<td th:text="${vacante.destacado}"></td>
+				<td th:text="${vacante.destacado == 1 ? 'Si' : 'No'}"></td> 
+				-->
+
+					<td>
+						<span th:if="${vacante.destacado==1}" class="badge bg-success">Si</span>
+						<span th:unless="${vacante.destacado==1}" class="badge bg-danger">No</span>
+
+					</td>
+					<td>
+						<a th:href="@{vacantes/view/{id} (id=${vacante.id})}" class="btn btn-success">ver
+							detalle</i></a>
+					</td>
+
+					<td>
+						<a th:href="@{vacantes/delete (id=${vacante.id})}" class="btn btn-danger">borrar</i></a>
+					</td>
+
+				</tr>
+
+			</tbody>
+		</table>
+	</main>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>
